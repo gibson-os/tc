@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Provider;
+namespace GibsonOS\Module\Tc\Provider;
 
 use GibsonOS\Core\Attribute\GetServices;
-use Tc\Model\Train;
-use Tc\Strategy\Train\TrainStrategyInterface;
+use GibsonOS\Module\Tc\Model\Train;
+use GibsonOS\Module\Tc\Strategy\Train\TrainStrategyInterface;
 
 class TrainProvider
 {

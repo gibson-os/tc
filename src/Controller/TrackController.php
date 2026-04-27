@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Controller;
+namespace GibsonOS\Module\Tc\Controller;
 
 use GibsonOS\Core\Attribute\CheckPermission;
 use GibsonOS\Core\Controller\AbstractController;

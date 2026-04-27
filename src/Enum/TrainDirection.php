@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Enum;
+namespace GibsonOS\Module\Tc\Enum;
 
 enum TrainDirection: int
 {

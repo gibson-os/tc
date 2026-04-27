@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Form;
+namespace GibsonOS\Module\Tc\Form;
 
 use GibsonOS\Core\Dto\Form\Button;
 use GibsonOS\Core\Dto\Form\ModelFormConfig;
 use GibsonOS\Core\Dto\Parameter\StringParameter;
 use GibsonOS\Core\Form\AbstractModelForm;
+use GibsonOS\Module\Tc\Model\Track;
 use Override;
-use Tc\Model\Track;
 
 /**
  * @extends AbstractModelForm<Track>

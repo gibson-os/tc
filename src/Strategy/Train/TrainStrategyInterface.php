@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Strategy\Train;
+namespace GibsonOS\Module\Tc\Strategy\Train;
 
 use GibsonOS\Core\Dto\Parameter\AbstractParameter;
-use Tc\Model\Train;
+use GibsonOS\Module\Tc\Model\Train;
 
 interface TrainStrategyInterface
 {

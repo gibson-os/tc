@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Install;
+namespace GibsonOS\Module\Tc\Install;
 
 use Generator;
 use GibsonOS\Core\Dto\Install\Success;

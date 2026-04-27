@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Form;
+namespace GibsonOS\Module\Tc\Form;
 
 use GibsonOS\Core\Dto\Form\Button;
 use GibsonOS\Core\Dto\Form\ModelFormConfig;
@@ -9,10 +9,10 @@ use GibsonOS\Core\Dto\Parameter\FileParameter;
 use GibsonOS\Core\Dto\Parameter\OptionParameter;
 use GibsonOS\Core\Dto\Parameter\StringParameter;
 use GibsonOS\Core\Form\AbstractModelForm;
+use GibsonOS\Module\Tc\Model\Train;
+use GibsonOS\Module\Tc\Provider\TrainProvider;
+use GibsonOS\Module\Tc\Strategy\Train\TrainStrategyInterface;
 use Override;
-use Tc\Model\Train;
-use Tc\Provider\TrainProvider;
-use Tc\Strategy\Train\TrainStrategyInterface;
 
 /**
  * @extends AbstractModelForm<Train>

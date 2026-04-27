@@ -8,9 +8,9 @@ use GibsonOS\Core\Dto\Form\ModelFormConfig;
 use GibsonOS\Core\Dto\Parameter\AbstractParameter;
 use GibsonOS\Core\Exception\FormException;
 use GibsonOS\Core\Form\AbstractModelForm;
+use GibsonOS\Module\Tc\Model\Train;
+use GibsonOS\Module\Tc\Provider\TrainProvider;
 use Override;
-use Tc\Model\Train;
-use Tc\Provider\TrainProvider;
 
 /**
  * @extends AbstractModelForm<Train>

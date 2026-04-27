@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Model\Track;
+namespace GibsonOS\Module\Tc\Model\Track;
 
 use GibsonOS\Core\Attribute\Install\Database\Column;
 use GibsonOS\Core\Attribute\Install\Database\Constraint;
 use GibsonOS\Core\Attribute\Install\Database\Table;
 use GibsonOS\Core\Model\AbstractModel;
-use Tc\Model\Track;
-use Tc\Model\Track\Layout\Element;
+use GibsonOS\Module\Tc\Model\Track;
+use GibsonOS\Module\Tc\Model\Track\Layout\Element;
 
 /**
  * @method getTrack(): Track

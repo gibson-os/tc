@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Controller;
+namespace GibsonOS\Module\Tc\Controller;
 
 use GibsonOS\Core\Attribute\CheckPermission;
 use GibsonOS\Core\Attribute\GetMappedModel;
@@ -15,11 +15,11 @@ use GibsonOS\Core\Exception\Model\SaveError;
 use GibsonOS\Core\Exception\ViolationException;
 use GibsonOS\Core\Manager\ModelManager;
 use GibsonOS\Core\Service\Response\AjaxResponse;
+use GibsonOS\Module\Tc\Form\TrainForm;
+use GibsonOS\Module\Tc\Model\Train;
 use JsonException;
 use MDO\Exception\RecordException;
 use ReflectionException;
-use Tc\Form\TrainForm;
-use Tc\Model\Train;
 
 class TrainController extends AbstractController
 {

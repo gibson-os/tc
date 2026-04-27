@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Model;
+namespace GibsonOS\Module\Tc\Model;
 
 use GibsonOS\Core\Attribute\Install\Database\Column;
 use GibsonOS\Core\Attribute\Install\Database\Constraint;
 use GibsonOS\Core\Attribute\Install\Database\Table;
 use GibsonOS\Core\Model\AbstractModel;
+use GibsonOS\Module\Tc\Enum\TrainDirection;
+use GibsonOS\Module\Tc\Strategy\Train\TrainStrategyInterface;
 use JsonSerializable;
 use Override;
-use Tc\Enum\TrainDirection;
-use Tc\Strategy\Train\TrainStrategyInterface;
 
 /**
  * @method getTrack(): Track

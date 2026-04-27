@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Model\Track\Layout;
+namespace GibsonOS\Module\Tc\Model\Track\Layout;
 
 use GibsonOS\Core\Attribute\Install\Database\Column;
 use GibsonOS\Core\Attribute\Install\Database\Constraint;
 use GibsonOS\Core\Attribute\Install\Database\Table;
 use GibsonOS\Core\Model\AbstractModel;
-use Tc\Enum\ElementDirection;
-use Tc\Enum\TrackElement;
-use Tc\Model\Track\Layout;
+use GibsonOS\Module\Tc\Enum\ElementDirection;
+use GibsonOS\Module\Tc\Enum\TrackElement;
+use GibsonOS\Module\Tc\Model\Track\Layout;
 
 /**
  * @method getLayout(): Layout

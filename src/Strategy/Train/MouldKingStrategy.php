@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Tc\Strategy\Train;
+namespace GibsonOS\Module\Tc\Strategy\Train;
 
 use GibsonOS\Core\Dto\Parameter\StringParameter;
+use GibsonOS\Module\Tc\Model\Train;
 use Override;
-use Tc\Model\Train;
 
 class MouldKingStrategy implements TrainStrategyInterface
 {
