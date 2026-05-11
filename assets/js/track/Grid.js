@@ -20,6 +20,7 @@ Ext.define('GibsonOS.module.tc.track.Grid', {
     addFunction() {
         const me = this;
         const window = new GibsonOS.module.core.component.form.Window({
+            title: 'Neuer Track',
             url: baseDir + 'tc/track/form',
         }).show();
 

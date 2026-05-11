@@ -26,7 +26,7 @@ class TrainProvider
 
     public function getStrategy(Train $train): TrainStrategyInterface
     {
-        return $this->trainStrategies[$train->getStrategy()];
+        return $this->trainStrategies[$train->getStrategy()->getStrategyClass()];
     }
 
     /**

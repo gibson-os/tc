@@ -16,4 +16,6 @@ interface TrainStrategyInterface
      * @return AbstractParameter[]
      */
     public function getConfigFields(): array;
+
+    public function getFunctionConfig(): array;
 }

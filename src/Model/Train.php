@@ -5,10 +5,11 @@ namespace GibsonOS\Module\Tc\Model;
 
 use GibsonOS\Core\Attribute\Install\Database\Column;
 use GibsonOS\Core\Attribute\Install\Database\Constraint;
+use GibsonOS\Core\Attribute\Install\Database\Key;
 use GibsonOS\Core\Attribute\Install\Database\Table;
 use GibsonOS\Core\Model\AbstractModel;
 use GibsonOS\Module\Tc\Enum\TrainDirection;
-use GibsonOS\Module\Tc\Strategy\Train\TrainStrategyInterface;
+use GibsonOS\Module\Tc\Enum\TrainStrategy;
 use JsonSerializable;
 use Override;
 
@@ -34,11 +35,9 @@ class Train extends AbstractModel implements JsonSerializable
     #[Column]
     private TrainDirection $direction = TrainDirection::FORWARD;
 
-    /**
-     * @var class-string<TrainStrategyInterface>
-     */
-    #[Column(length: 255)]
-    private string $strategy;
+    #[Column]
+    #[Key]
+    private TrainStrategy $strategy;
 
     #[Column]
     private array $configuration = [];
@@ -109,18 +108,12 @@ class Train extends AbstractModel implements JsonSerializable
         return $this;
     }
 
-    /**
-     * @return class-string<TrainStrategyInterface>
-     */
-    public function getStrategy(): string
+    public function getStrategy(): TrainStrategy
     {
         return $this->strategy;
     }
 
-    /**
-     * @param class-string<TrainStrategyInterface> $strategy
-     */
-    public function setStrategy(string $strategy): Train
+    public function setStrategy(TrainStrategy $strategy): Train
     {
         $this->strategy = $strategy;
 

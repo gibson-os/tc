@@ -8,6 +8,7 @@ use GibsonOS\Core\Attribute\Install\Database\Constraint;
 use GibsonOS\Core\Attribute\Install\Database\Table;
 use GibsonOS\Core\Model\AbstractModel;
 use GibsonOS\Module\Tc\Model\Track\Layout;
+use GibsonOS\Module\Tc\Model\Track\System;
 use JsonSerializable;
 use Override;
 
@@ -18,6 +19,9 @@ use Override;
  * @method getLayouts(): Layout[]
  * @method setLayouts(Layout[] $layouts): Track
  * @method addLayouts(Layout[] $layouts): Track
+ * @method getSystems(): System[]
+ * @method setSystems(System[] $systems): Track
+ * @method addSystems(System[] $systems): Track
  */
 #[Table]
 class Track extends AbstractModel implements JsonSerializable
@@ -33,6 +37,9 @@ class Track extends AbstractModel implements JsonSerializable
 
     #[Constraint('track', Layout::class)]
     protected array $layouts = [];
+
+    #[Constraint('track', System::class)]
+    protected array $systems = [];
 
     public function getId(): ?int
     {

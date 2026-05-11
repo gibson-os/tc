@@ -5,8 +5,11 @@ namespace GibsonOS\Module\Tc\Form;
 
 use GibsonOS\Core\Dto\Form\Button;
 use GibsonOS\Core\Dto\Form\ModelFormConfig;
+use GibsonOS\Core\Dto\Parameter\EnumParameter;
 use GibsonOS\Core\Dto\Parameter\StringParameter;
 use GibsonOS\Core\Form\AbstractModelForm;
+use GibsonOS\Core\Manager\ReflectionManager;
+use GibsonOS\Module\Tc\Enum\TrainStrategy;
 use GibsonOS\Module\Tc\Model\Track;
 use Override;
 
@@ -15,7 +18,7 @@ use Override;
  */
 class TrackForm extends AbstractModelForm
 {
-    public function __construct()
+    public function __construct(private readonly ReflectionManager $reflectionManager)
     {
     }
 
@@ -24,6 +27,8 @@ class TrackForm extends AbstractModelForm
     {
         return [
             'name' => new StringParameter('Name'),
+            'trainSystems[]' => new EnumParameter($this->reflectionManager, 'Systeme', TrainStrategy::class)
+                ->setMultiple(true),
         ];
     }
 
