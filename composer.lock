@@ -427,16 +427,16 @@
         },
         {
             "name": "gibson-os/core",
-            "version": "v5.9.0",
+            "version": "v5.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gibson-os/core.git",
-                "reference": "2a0566af197829aa415da9a628ab4eb0b7bdb828"
+                "reference": "e9c53e63365ec6bb0800eb91c85379d8f1511a50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gibson-os/core/zipball/2a0566af197829aa415da9a628ab4eb0b7bdb828",
-                "reference": "2a0566af197829aa415da9a628ab4eb0b7bdb828",
+                "url": "https://api.github.com/repos/gibson-os/core/zipball/e9c53e63365ec6bb0800eb91c85379d8f1511a50",
+                "reference": "e9c53e63365ec6bb0800eb91c85379d8f1511a50",
                 "shasum": ""
             },
             "require": {
@@ -487,9 +487,9 @@
             "notification-url": "https://packagist.org/downloads/",
             "support": {
                 "issues": "https://github.com/gibson-os/core/issues",
-                "source": "https://github.com/gibson-os/core/tree/v5.9.0"
+                "source": "https://github.com/gibson-os/core/tree/v5.9.1"
             },
-            "time": "2026-05-14T10:22:08+00:00"
+            "time": "2026-05-14T18:30:55+00:00"
         },
         {
             "name": "gibson-os/hc",

@@ -35,7 +35,7 @@ class StrategyForm extends AbstractModelForm
             throw new FormException('Train not set');
         }
 
-        return $this->trainProvider->getStrategy($train)->getConfigFields();
+        return $this->trainProvider->getStrategy($train)->getConfigFields($train);
     }
 
     #[Override]

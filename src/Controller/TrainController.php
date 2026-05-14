@@ -20,6 +20,7 @@ use GibsonOS\Core\Service\Response\AjaxResponse;
 use GibsonOS\Module\Tc\Form\TrainControlForm;
 use GibsonOS\Module\Tc\Form\TrainForm;
 use GibsonOS\Module\Tc\Model\Train;
+use GibsonOS\Module\Tc\Provider\TrainProvider;
 use GibsonOS\Module\Tc\Store\TrainStore;
 use JsonException;
 use MDO\Exception\RecordException;
@@ -74,10 +75,17 @@ class TrainController extends AbstractController
     #[CheckPermission([Permission::WRITE, Permission::MANAGE])]
     #[AlwaysAjaxResponse]
     public function post(
+        TrainProvider $trainProvider,
         ModelManager $modelManager,
         #[GetMappedModel]
         Train $train,
+        #[GetModel]
+        Train $originalTrain,
+        ?string $action,
     ): AjaxResponse {
+        $strategy = $trainProvider->getStrategy($train);
+        $strategy->send($train, $originalTrain, $action);
+
         $modelManager->saveWithoutChildren($train);
 
         return $this->returnSuccess($train);

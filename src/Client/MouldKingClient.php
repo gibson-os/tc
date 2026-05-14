@@ -14,20 +14,21 @@ class MouldKingClient
     {
     }
 
-    public function connect(string $host, int $deviceId): void
+    public function connect(string $host, int $port, int $deviceId): void
     {
-        $this->webService->post($this->getRequest($host, 'connect', ['device' => $deviceId]));
+        $this->webService->post($this->getRequest($host, $port, 'connect', ['device' => $deviceId]));
     }
 
-    public function stop(string $host, int $deviceId): void
+    public function stop(string $host, int $port, int $deviceId): void
     {
-        $this->webService->post($this->getRequest($host, 'stop', ['device' => $deviceId]));
+        $this->webService->post($this->getRequest($host, $port, 'stop', ['device' => $deviceId]));
     }
 
-    public function control(string $host, int $deviceId, int $channel, float $power): void
+    public function control(string $host, int $port, int $deviceId, int $channel, float $power): void
     {
         $this->webService->post($this->getRequest(
             $host,
+            $port,
             'control',
             [
                 'device' => $deviceId,
@@ -37,14 +38,14 @@ class MouldKingClient
         ));
     }
 
-    public function btStop(string $host): void
+    public function btStop(string $host, int $port): void
     {
-        $this->webService->post($this->getRequest($host, 'btstop'));
+        $this->webService->post($this->getRequest($host, $port, 'btstop'));
     }
 
-    private function getRequest(string $host, string $endpoint, ?array $body = null)
+    private function getRequest(string $host, int $port, string $endpoint, ?array $body = null)
     {
-        $request = new Request(sprintf('%s/api/%s', $host, $endpoint));
+        $request = new Request(sprintf('%s/api/%s', $host, $endpoint))->setPort($port);
 
         if ($body !== null) {
             $jsonBody = JsonUtility::encode($body);
