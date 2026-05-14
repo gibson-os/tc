@@ -39,7 +39,7 @@ class MouldKingStrategy implements TrainStrategyInterface
 
         $port = (int) $train->getConfiguration()['apiPort'];
 
-        $deviceId = $train->getConfiguration()['type'] === MouldKingType::HUB4 ? 3 : 0;
+        $deviceId = MouldKingType::{$train->getConfiguration()['type']} === MouldKingType::HUB4 ? 3 : 0;
         $deviceId += $train->getConfiguration()['number'] - 1;
 
         if ($action === 'connect') {
