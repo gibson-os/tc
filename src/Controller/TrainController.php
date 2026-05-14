@@ -80,7 +80,7 @@ class TrainController extends AbstractController
         #[GetMappedModel]
         Train $train,
         #[GetModel]
-        Train $originalTrain,
+        ?Train $originalTrain,
         ?string $action,
     ): AjaxResponse {
         $strategy = $trainProvider->getStrategy($train);

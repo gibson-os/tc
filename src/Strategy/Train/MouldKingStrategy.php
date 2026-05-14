@@ -29,7 +29,7 @@ class MouldKingStrategy implements TrainStrategyInterface
     }
 
     #[Override]
-    public function send(Train $train, Train $originalTrain, ?string $action = null): void
+    public function send(Train $train, ?Train $originalTrain, ?string $action = null): void
     {
         $host = $train->getConfiguration()['apiUrl'];
         $port = (int) $train->getConfiguration()['apiPort'];
@@ -53,11 +53,11 @@ class MouldKingStrategy implements TrainStrategyInterface
 
         $changed = false;
 
-        if ($originalTrain->getSpeed() !== $speed) {
+        if ($originalTrain?->getSpeed() !== $speed) {
             $changed = true;
         }
 
-        if ($originalTrain->getDirection() !== $direction) {
+        if ($originalTrain?->getDirection() !== $direction) {
             $changed = true;
         }
 

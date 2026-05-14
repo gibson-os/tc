@@ -11,7 +11,7 @@ interface TrainStrategyInterface
 {
     public function getMaxSpeed(): int;
 
-    public function send(Train $train, Train $originalTrain, ?string $action = null): void;
+    public function send(Train $train, ?Train $originalTrain, ?string $action = null): void;
 
     /**
      * @return array<string, AbstractParameter>
