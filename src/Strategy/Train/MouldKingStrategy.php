@@ -31,7 +31,12 @@ class MouldKingStrategy implements TrainStrategyInterface
     #[Override]
     public function send(Train $train, ?Train $originalTrain, ?string $action = null): void
     {
-        $host = $train->getConfiguration()['apiUrl'];
+        $host = $train->getConfiguration()['apiUrl'] ?? null;
+
+        if ($host === null) {
+            return;
+        }
+
         $port = (int) $train->getConfiguration()['apiPort'];
 
         $deviceId = $train->getConfiguration()['type'] === MouldKingType::HUB4 ? 3 : 0;
