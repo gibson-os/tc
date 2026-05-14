@@ -47,7 +47,7 @@ class MouldKingClient
     {
         $request = new Request(sprintf('%s/api/%s', $host, $endpoint))
             ->setPort($port)
-            ->setHeaders(['Content-Type' => 'application/json'])
+            ->setHeader('Content-Type', 'application/json')
         ;
 
         if ($body !== null) {
