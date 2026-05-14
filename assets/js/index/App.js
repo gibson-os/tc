@@ -12,7 +12,7 @@ Ext.define('GibsonOS.module.tc.index.App', {
         const me = this;
 
         me.items = [{
-            xtype: 'gosModuleTcTrackGrid'
+            xtype: 'gosModuleTcIndexTabPanel'
         }];
 
         me.callParent();

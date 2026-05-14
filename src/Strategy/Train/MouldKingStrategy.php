@@ -3,15 +3,21 @@ declare(strict_types=1);
 
 namespace GibsonOS\Module\Tc\Strategy\Train;
 
+use GibsonOS\Core\Dto\Parameter\EnumParameter;
+use GibsonOS\Core\Dto\Parameter\IntParameter;
 use GibsonOS\Core\Dto\Parameter\StringParameter;
+use GibsonOS\Core\Manager\ReflectionManager;
 use GibsonOS\Module\Tc\Client\MouldKingClient;
+use GibsonOS\Module\Tc\Enum\MouldKingType;
 use GibsonOS\Module\Tc\Model\Train;
 use Override;
 
 class MouldKingStrategy implements TrainStrategyInterface
 {
-    public function __construct(private readonly MouldKingClient $mouldKingClient)
-    {
+    public function __construct(
+        private readonly MouldKingClient $mouldKingClient,
+        private readonly ReflectionManager $reflectionManager,
+    ) {
     }
 
     #[Override]
@@ -35,8 +41,8 @@ class MouldKingStrategy implements TrainStrategyInterface
     {
         return [
             'apiUrl' => new StringParameter('API URL'),
-            'type' => new StringParameter('Typ'),
-            'number' => new StringParameter('Nummer'),
+            'type' => new EnumParameter($this->reflectionManager, 'Typ', MouldKingType::class),
+            'number' => new IntParameter('Nummer')->setRange(1, 3),
         ];
     }
 

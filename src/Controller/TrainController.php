@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace GibsonOS\Module\Tc\Controller;
 
+use GibsonOS\Core\Attribute\AlwaysAjaxResponse;
 use GibsonOS\Core\Attribute\CheckPermission;
 use GibsonOS\Core\Attribute\GetMappedModel;
 use GibsonOS\Core\Attribute\GetModel;
@@ -60,7 +61,7 @@ class TrainController extends AbstractController
         #[GetModel]
         Train $train,
     ): AjaxResponse {
-        return $this->returnSuccess($trainControlForm->getForm(new ModelFormConfig($train)));
+        return $this->returnSuccess($trainControlForm->getForm($train));
     }
 
     /**
@@ -71,6 +72,7 @@ class TrainController extends AbstractController
      * @throws ViolationException
      */
     #[CheckPermission([Permission::WRITE, Permission::MANAGE])]
+    #[AlwaysAjaxResponse]
     public function post(
         ModelManager $modelManager,
         #[GetMappedModel]

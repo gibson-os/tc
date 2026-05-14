@@ -5,13 +5,13 @@ namespace GibsonOS\Module\Tc\Form;
 
 use GibsonOS\Core\Dto\Form\Button;
 use GibsonOS\Core\Dto\Form\ModelFormConfig;
+use GibsonOS\Core\Dto\Parameter\EnumParameter;
 use GibsonOS\Core\Dto\Parameter\FileParameter;
-use GibsonOS\Core\Dto\Parameter\OptionParameter;
 use GibsonOS\Core\Dto\Parameter\StringParameter;
 use GibsonOS\Core\Form\AbstractModelForm;
+use GibsonOS\Core\Manager\ReflectionManager;
+use GibsonOS\Module\Tc\Enum\TrainStrategy;
 use GibsonOS\Module\Tc\Model\Train;
-use GibsonOS\Module\Tc\Provider\TrainProvider;
-use GibsonOS\Module\Tc\Strategy\Train\TrainStrategyInterface;
 use Override;
 
 /**
@@ -19,7 +19,7 @@ use Override;
  */
 class TrainForm extends AbstractModelForm
 {
-    public function __construct(private readonly TrainProvider $trainProvider)
+    public function __construct(private readonly ReflectionManager $reflectionManager)
     {
     }
 
@@ -29,13 +29,7 @@ class TrainForm extends AbstractModelForm
         return [
             'name' => new StringParameter('Name'),
             'imageFile' => new FileParameter('Bild', 'Auswählen'),
-            'strategy' => new OptionParameter(
-                'Strategie',
-                array_map(
-                    static fn (TrainStrategyInterface $strategy): string => $strategy::class,
-                    $this->trainProvider->getStrategies(),
-                ),
-            ),
+            'strategy' => new EnumParameter($this->reflectionManager, 'System', TrainStrategy::class),
         ];
     }
 

@@ -10,7 +10,7 @@ use GibsonOS\Module\Tc\Strategy\Train\TrainStrategyInterface;
 class TrainProvider
 {
     /** @var array<class-string<TrainStrategyInterface>, TrainStrategyInterface> */
-    private readonly array $trainStrategies;
+    private array $trainStrategies;
 
     /**
      * @param TrainStrategyInterface[] $trainStrategies

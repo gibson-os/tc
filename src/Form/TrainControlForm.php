@@ -3,50 +3,48 @@ declare(strict_types=1);
 
 namespace GibsonOS\Module\Tc\Form;
 
-use GibsonOS\Core\Dto\Form\ModelFormConfig;
+use GibsonOS\Core\Dto\Form\SubmitOnChange;
 use GibsonOS\Core\Dto\Parameter\BoolParameter;
 use GibsonOS\Core\Dto\Parameter\SliderParameter;
-use GibsonOS\Core\Exception\FormException;
-use GibsonOS\Core\Form\AbstractModelForm;
 use GibsonOS\Module\Tc\Model\Train;
 use GibsonOS\Module\Tc\Provider\TrainProvider;
-use Override;
 
-/**
- * @extends AbstractModelForm<Train>
- */
-class TrainControlForm extends AbstractModelForm
+class TrainControlForm
 {
     public function __construct(private readonly TrainProvider $trainProvider)
     {
     }
 
-    #[Override]
-    protected function getFields(ModelFormConfig $config): array
+    public function getForm(Train $train): array
     {
-        $train = $config->getModel();
-
-        if (!$train instanceof Train) {
-            throw new FormException('Train not set');
-        }
-
-        $strategy = $this->trainProvider->getStrategy($train);
-
         return [
-            'speed' => new SliderParameter('Geschwinidigkeit', 0, $strategy->getMaxSpeed(), 1),
-            'direction' => new BoolParameter('Vorwärts'),
+            'fields' => $this->getFields($train),
         ];
     }
 
-    #[Override]
-    protected function getButtons(ModelFormConfig $config): array
+    protected function getFields(Train $train): array
     {
-        return [];
-    }
+        $strategy = $this->trainProvider->getStrategy($train);
+        $configFields = $strategy->getConfigFields();
+        $trainConfig = $train->getConfiguration();
 
-    #[Override]
-    protected function supportedModel(): string
-    {
-        return Train::class;
+        foreach ($configFields as $fieldName => $field) {
+            $field->setValue($trainConfig[$fieldName] ?? null);
+        }
+
+        $submitOnChange = new SubmitOnChange(
+            'tc',
+            'train',
+            'send',
+        );
+
+        return [
+            'speed' => new SliderParameter('Geschwindigkeit', 0, $strategy->getMaxSpeed(), 1)
+                ->setValue($train->getSpeed())
+                ->setSubmitOnChange($submitOnChange),
+            'direction' => new BoolParameter('Vorwärts')
+                ->setValue($train->getDirection())
+                ->setSubmitOnChange($submitOnChange),
+        ] + $configFields;
     }
 }

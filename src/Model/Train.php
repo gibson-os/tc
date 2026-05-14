@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace GibsonOS\Module\Tc\Model;
 
 use GibsonOS\Core\Attribute\Install\Database\Column;
-use GibsonOS\Core\Attribute\Install\Database\Constraint;
 use GibsonOS\Core\Attribute\Install\Database\Key;
 use GibsonOS\Core\Attribute\Install\Database\Table;
 use GibsonOS\Core\Model\AbstractModel;
@@ -13,10 +12,6 @@ use GibsonOS\Module\Tc\Enum\TrainStrategy;
 use JsonSerializable;
 use Override;
 
-/**
- * @method getTrack(): Track
- * @method setTrack(Track $track): Train
- */
 #[Table]
 class Train extends AbstractModel implements JsonSerializable
 {
@@ -41,12 +36,6 @@ class Train extends AbstractModel implements JsonSerializable
 
     #[Column]
     private array $configuration = [];
-
-    #[Column(attributes: [Column::ATTRIBUTE_UNSIGNED])]
-    private int $trackId;
-
-    #[Constraint]
-    protected Track $track;
 
     public function getId(): ?int
     {
@@ -128,18 +117,6 @@ class Train extends AbstractModel implements JsonSerializable
     public function setConfiguration(array $configuration): Train
     {
         $this->configuration = $configuration;
-
-        return $this;
-    }
-
-    public function getTrackId(): int
-    {
-        return $this->trackId;
-    }
-
-    public function setTrackId(int $trackId): Train
-    {
-        $this->trackId = $trackId;
 
         return $this;
     }
