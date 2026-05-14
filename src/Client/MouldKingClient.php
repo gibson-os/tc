@@ -45,7 +45,10 @@ class MouldKingClient
 
     private function getRequest(string $host, int $port, string $endpoint, ?array $body = null)
     {
-        $request = new Request(sprintf('%s/api/%s', $host, $endpoint))->setPort($port);
+        $request = new Request(sprintf('%s/api/%s', $host, $endpoint))
+            ->setPort($port)
+            ->setHeaders(['Content-Type' => 'application/json'])
+        ;
 
         if ($body !== null) {
             $jsonBody = JsonUtility::encode($body);
