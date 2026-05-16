@@ -38,6 +38,7 @@ class TrainControlForm
 
         $fields = [
             'speed' => new SliderParameter('Geschwindigkeit', 0, $strategy->getMaxSpeed(), 1)
+                ->setControlByVolumeControl(true)
                 ->setValue($train->getSpeed())
                 ->setSubmitOnChange($submitOnChange),
             'direction' => new BoolParameter('Vorwärts')
