@@ -109,14 +109,14 @@ class TrainController extends AbstractController
         $strategy = $trainProvider->getStrategy($train);
         $strategy->send($train, $originalTrain, $action);
 
+        $modelManager->saveWithoutChildren($train);
+
         if (isset($image['tmp_name'])) {
             $fileService->move(
                 $image['tmp_name'],
                 $dirService->addEndSlash($imagePath->getValue()) . ($train->getId() ?? 0),
             );
         }
-
-        $modelManager->saveWithoutChildren($train);
 
         return $this->returnSuccess($train);
     }
