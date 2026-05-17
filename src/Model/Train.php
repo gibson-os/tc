@@ -21,9 +21,6 @@ class Train extends AbstractModel implements JsonSerializable
     #[Column(length: 64)]
     private string $name;
 
-    #[Column(length: 64)]
-    private ?string $image = null;
-
     #[Column(type: Column::TYPE_SMALLINT, attributes: [Column::ATTRIBUTE_UNSIGNED])]
     private int $speed = 0;
 
@@ -57,18 +54,6 @@ class Train extends AbstractModel implements JsonSerializable
     public function setName(string $name): Train
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): Train
-    {
-        $this->image = $image;
 
         return $this;
     }
@@ -127,7 +112,6 @@ class Train extends AbstractModel implements JsonSerializable
         return [
             'id' => $this->getId(),
             'name' => $this->getName(),
-            'image' => $this->getImage(),
             'speed' => $this->getSpeed(),
             'direction' => $this->getDirection(),
         ];

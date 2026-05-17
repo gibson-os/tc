@@ -12,6 +12,17 @@ Ext.define('GibsonOS.module.tc.train.Grid', {
     },
     getColumns() {
         return [{
+            header: 'Bild',
+            dataIndex: 'id',
+            width: 77,
+            align: 'center',
+            sortable: false,
+            renderer(value, meta, record) {
+                return '<a href="' + baseDir + 'tc/train/image/id/' + value + '" target="_blank">' +
+                    '<img src="' + baseDir + 'tc/train/image/id/' + value + '?width=64&height=64" alt="' + record.get('name') + '"/>'
+                '</a>';
+            }
+        },{
             header: 'Name',
             dataIndex: 'name',
             flex: 1

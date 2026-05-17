@@ -28,7 +28,7 @@ class TrainForm extends AbstractModelForm
     {
         return [
             'name' => new StringParameter('Name'),
-            'imageFile' => new FileParameter('Bild', 'Auswählen'),
+            'image' => new FileParameter('Bild', 'Auswählen'),
             'strategy' => new EnumParameter($this->reflectionManager, 'System', TrainStrategy::class),
         ];
     }
